@@ -44,6 +44,23 @@ export default async function Forex(props: ForexProps) {
     y: Object.values(value as DataValue),
   }));
   const titleText = data?.["Meta Data"]["1. Information"];
+  const baseCurrency = data?.["Meta Data"]["2. From Symbol"];
+  const quoteCurrency = data?.["Meta Data"]["3. To Symbol"];
+  const lastUpdatedAt =
+    data?.["Meta Data"][`${interval === "fx_daily" ? 5 : 4}. Last Refreshed`] +
+    " " +
+    data?.["Meta Data"][`${interval === "fx_daily" ? 6 : 5}. Time Zone`];
 
-  return <CandleStickChart seriesData={seriesData} titleText={titleText} />;
+  return (
+    <div className="flex flex-col items-center justify-center w-full">
+      <div>
+        <span className="font-bold">Currency Pair:</span> {baseCurrency}/
+        {quoteCurrency}
+      </div>
+      <div className="text-xs text-right w-[80%]">
+        <span className="font-bold ">Last Updated At:</span> {lastUpdatedAt}
+      </div>
+      <CandleStickChart seriesData={seriesData} titleText={titleText} />
+    </div>
+  );
 }

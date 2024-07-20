@@ -46,6 +46,23 @@ export default async function CryptoCurrencies(props: CryptoCurrenciesProps) {
     y: Object.values(value as DataValue).slice(0, 4),
   }));
   const titleText = data?.["Meta Data"]["1. Information"];
+  const baseCurrency = data?.["Meta Data"]["2. Digital Currency Code"];
+  const quoteCurrency = data?.["Meta Data"]["4. Market Code"];
+  const lastUpdatedAt =
+    data?.["Meta Data"]["6. Last Refreshed"] +
+    " " +
+    data?.["Meta Data"]["7. Time Zone"];
 
-  return <CandleStickChart seriesData={seriesData} titleText={titleText} />;
+  return (
+    <div className="flex flex-col items-center justify-center w-full">
+      <div>
+        <span className="font-bold">Digital Currency Pair:</span> {baseCurrency}
+        /{quoteCurrency}
+      </div>
+      <div className="text-xs text-right w-[80%]">
+        <span className="font-bold ">Last Updated At:</span> {lastUpdatedAt}
+      </div>
+      <CandleStickChart seriesData={seriesData} titleText={titleText} />
+    </div>
+  );
 }

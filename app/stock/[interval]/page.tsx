@@ -42,6 +42,23 @@ export default async function Stock(props: StockProps) {
     y: Object.values(value as DataValue).slice(0, 4),
   }));
   const titleText = data?.["Meta Data"]["1. Information"];
+  const stockSymbol = data?.["Meta Data"]["2. Symbol"];
+  const lastUpdatedAt =
+    data?.["Meta Data"]["3. Last Refreshed"] +
+    " " +
+    data?.["Meta Data"][
+      `${interval === "time_series_daily" ? 5 : 4}. Time Zone`
+    ];
 
-  return <CandleStickChart seriesData={seriesData} titleText={titleText} />;
+  return (
+    <div className="flex flex-col items-center justify-center w-full">
+      <div>
+        <span className="font-bold">Stock Symbol:</span> {stockSymbol}
+      </div>
+      <div className="text-xs text-right w-[80%]">
+        <span className="font-bold ">Last Updated At:</span> {lastUpdatedAt}
+      </div>
+      <CandleStickChart seriesData={seriesData} titleText={titleText} />
+    </div>
+  );
 }
