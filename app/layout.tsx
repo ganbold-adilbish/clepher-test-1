@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Clepher Test 1",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <NavBar />
         <div className="mt-20 flex justify-center items-center">{children}</div>
+        <Analytics />
       </body>
     </html>
   );
