@@ -133,12 +133,10 @@ const navbarItems = [
 
 export default function NavBar() {
   return (
-    <div className="hidden w-full md:block md:w-auto">
-      <div className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:mt-0 md:border-0 md:bg-white">
-        {navbarItems.map((navbarItem) => (
-          <NavBarItem key={navbarItem.id} {...navbarItem} />
-        ))}
-      </div>
+    <div className="font-medium flex flex-col p-4 shadow-md bg-gray-50 md:flex-row md:justify-center">
+      {navbarItems.map((navbarItem) => (
+        <NavBarItem key={navbarItem.id} {...navbarItem} />
+      ))}
     </div>
   );
 }
