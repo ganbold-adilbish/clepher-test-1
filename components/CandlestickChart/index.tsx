@@ -39,6 +39,11 @@ export default function CandleStickChart({
       tooltip: {
         enabled: true,
       },
+      labels: {
+        formatter: function (value) {
+          return value.toFixed(2);
+        },
+      },
     },
   };
 
