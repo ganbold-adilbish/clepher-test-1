@@ -85,6 +85,28 @@ const navbarItems = [
       },
     ],
   },
+  {
+    id: 4,
+    title: "Cryptocurrencies",
+    path: "/cryptocurrencies",
+    children: [
+      {
+        id: 2,
+        title: "Daily",
+        path: "/digital_currency_daily",
+      },
+      {
+        id: 3,
+        title: "Weekly",
+        path: "/digital_currency_weekly",
+      },
+      {
+        id: 4,
+        title: "Monthly",
+        path: "/digital_currency_monthly",
+      },
+    ],
+  },
 ];
 
 export default function NavBar() {
