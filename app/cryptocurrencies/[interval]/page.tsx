@@ -1,4 +1,4 @@
-import CandleStickChart from "@/components/CandlestickChart";
+import MultipleYAxisCandlestickChart from "@/components/MultipleYAxisCandlestickChart";
 
 type CryptoCurrenciesProps = {
   params: { interval: string };
@@ -41,9 +41,14 @@ export default async function CryptoCurrencies(props: CryptoCurrenciesProps) {
         intervalMap[interval as keyof typeof intervalMap]
       })`
     ]
-  )?.map(([date, value]) => ({
+  );
+  const seriesPriceData = seriesData?.map(([date, value]) => ({
     x: date,
     y: Object.values(value as DataValue).slice(0, 4),
+  }));
+  const seriesVolumeData = seriesData?.map(([date, value]) => ({
+    x: date,
+    y: Object.values(value as DataValue).slice(-1)[0],
   }));
   const titleText = data?.["Meta Data"]["1. Information"];
   const baseCurrency = data?.["Meta Data"]["2. Digital Currency Code"];
@@ -62,7 +67,11 @@ export default async function CryptoCurrencies(props: CryptoCurrenciesProps) {
       <div className="text-xs text-right w-[80%]">
         <span className="font-bold ">Last Updated At:</span> {lastUpdatedAt}
       </div>
-      <CandleStickChart seriesData={seriesData} titleText={titleText} />
+      <MultipleYAxisCandlestickChart
+        seriesPriceData={seriesPriceData}
+        seriesVolumeData={seriesVolumeData}
+        titleText={titleText}
+      />
     </div>
   );
 }
