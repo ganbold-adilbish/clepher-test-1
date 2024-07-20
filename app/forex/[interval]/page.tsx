@@ -19,7 +19,11 @@ const intervalMap = {
 
 async function getData(interval: string) {
   const result = await fetch(
-    `https://www.alphavantage.co/query?function=${interval.toUpperCase()}&from_symbol=EUR&to_symbol=USD&apikey=demo`
+    `${
+      process.env.API_URL
+    }/query?function=${interval.toUpperCase()}&from_symbol=EUR&to_symbol=USD&apikey=${
+      process.env.API_KEY
+    }`
   );
   const data = await result.json();
 

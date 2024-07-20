@@ -11,7 +11,11 @@ type DataItem = {
 
 async function getData(commodity: string) {
   const result = await fetch(
-    `https://www.alphavantage.co/query?function=${commodity.toUpperCase()}&interval=monthly&apikey=demo`
+    `${
+      process.env.API_URL
+    }/query?function=${commodity.toUpperCase()}&interval=monthly&apikey=${
+      process.env.API_KEY
+    }`
   );
   const data = await result.json();
 
