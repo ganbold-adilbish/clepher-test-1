@@ -31,15 +31,6 @@ export default function LineChart({
   const options: ApexOptions = {
     chart: {
       type: "line",
-      zoom: {
-        enabled: false,
-      },
-      toolbar: {
-        show: false,
-      },
-    },
-    dataLabels: {
-      enabled: false,
     },
     stroke: {
       curve: "straight",
@@ -47,12 +38,6 @@ export default function LineChart({
     title: {
       text: titleText,
       align: "left",
-    },
-    grid: {
-      row: {
-        colors: ["#f3f3f3", "transparent"],
-        opacity: 0.5,
-      },
     },
     xaxis: {
       type: "datetime",
@@ -68,6 +53,9 @@ export default function LineChart({
       },
     },
     tooltip: {
+      x: {
+        format: "MMM dd, yyyy",
+      },
       y: {
         formatter: function (value) {
           return `${value} ${yAxisLabel}`;
