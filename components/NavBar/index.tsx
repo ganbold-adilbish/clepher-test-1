@@ -107,6 +107,28 @@ const navbarItems = [
       },
     ],
   },
+  {
+    id: 5,
+    title: "Stock",
+    path: "/stock",
+    children: [
+      {
+        id: 1,
+        title: "Daily",
+        path: "/time_series_daily",
+      },
+      {
+        id: 2,
+        title: "Weekly",
+        path: "/time_series_weekly",
+      },
+      {
+        id: 3,
+        title: "Monthly",
+        path: "/time_series_monthly",
+      },
+    ],
+  },
 ];
 
 export default function NavBar() {
